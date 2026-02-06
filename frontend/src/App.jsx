@@ -12,17 +12,14 @@ function App() {
   const [status, setStatus] = useState("CONNECTING...");
 
   useEffect(() => {
-    // Fetch Portfolio Data
-    fetch('http://localhost:8000/api/portfolio')
+    // Fetch Portfolio Data from local JSON
+    fetch('/data.json')
       .then(res => res.json())
       .then(setData)
       .catch(console.error);
       
-    // Fetch System Status
-    fetch('http://localhost:8000/api/status')
-      .then(res => res.json())
-      .then(s => setStatus(s.status))
-      .catch(() => setStatus("OFFLINE"));
+    // Set status
+    setStatus("OPERATIONAL");
   }, []);
 
   if (!data) return <div className="min-h-screen bg-devops-bg text-terminal-green flex items-center justify-center font-mono">Initializing System...</div>;
