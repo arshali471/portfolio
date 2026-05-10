@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Md Arshad Ali — Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;400i&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #111111;
+      background: #f0ece8;
+    }
+
+    /* ── Action bar ── */
+    .action-bar {
+      background: #111111;
+      padding: 0.7rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .action-bar-left { display: flex; align-items: center; gap: 1.5rem; }
+    .action-bar a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    .action-bar a:hover { color: #fff; }
+    .action-bar-right { display: flex; align-items: center; gap: 0.75rem; }
+    .action-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+    .btn-print {
+      background: #ffffff;
+      color: #111111;
+      border: none;
+      padding: 0.45rem 1.2rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: Inter, sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-print:hover { background: #f0ece8; }
+
+    /* ── Letter paper ── */
+    .letter {
+      max-width: 760px;
+      margin: 2rem auto;
+      background: #ffffff;
+      box-shadow: 0 8px 60px rgba(0,0,0,0.12);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* ── Letter header ── */
+    .letter-header {
+      background: #111111;
+      padding: 2.5rem 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .letter-header-left h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+    }
+    .letter-header-left .title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+    }
+    .letter-header-right {
+      text-align: right;
+    }
+    .letter-header-right p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+    .letter-header-right a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+    }
+    .letter-header-right a:hover { color: #fff; }
+
+    /* ── Letter body ── */
+    .letter-body { padding: 3rem 3.5rem 3.5rem; }
+
+    .letter-date {
+      font-size: 0.82rem;
+      color: #999999;
+      margin-bottom: 2rem;
+    }
+
+    .letter-to { margin-bottom: 2rem; }
+    .letter-to p { font-size: 0.88rem; color: #444444; line-height: 1.65; }
+    .letter-to strong { color: #111111; }
+
+    .subject {
+      margin-bottom: 2rem;
+      padding: 0.75rem 1.25rem;
+      background: #f9f5f0;
+      border-left: 3px solid #111111;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+    .subject p {
+      font-size: 0.82rem;
+      color: #555555;
+    }
+    .subject strong { color: #111111; }
+
+    .letter-para {
+      font-size: 0.9rem;
+      color: #444444;
+      line-height: 1.82;
+      margin-bottom: 1.4rem;
+    }
+    .letter-para:last-of-type { margin-bottom: 0; }
+    .letter-para strong { color: #111111; }
+
+    .letter-closing { margin-top: 2.5rem; }
+    .closing-line {
+      font-size: 0.88rem;
+      color: #444444;
+      margin-bottom: 2rem;
+    }
+    .signature-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 0.25rem;
+    }
+    .signature-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #999999;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .signature-contacts { display: flex; flex-direction: column; gap: 0.2rem; }
+    .signature-contacts a {
+      font-size: 0.8rem;
+      color: #666666;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .signature-contacts a:hover { color: #111111; }
+
+    /* ── Highlight pill ── */
+    .pill {
+      display: inline-block;
+      background: #f9f5f0;
+      border: 1px solid #e8dfd6;
+      border-radius: 9999px;
+      padding: 0.1rem 0.6rem;
+      font-size: 0.82rem;
+      color: #111111;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* ── Print ── */
+    @media print {
+      .action-bar { display: none !important; }
+      body { background: #ffffff; }
+      .letter { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+      .letter-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+    @page { margin: 0.8cm; size: A4; }
+  </style>
+</head>
+<body>
+
+  <!-- Action bar -->
+  <div class="action-bar">
+    <div class="action-bar-left">
+      <a href="/">← Back to Portfolio</a>
+      <a href="/resume.html">View Resume →</a>
+    </div>
+    <div class="action-bar-right">
+      <span class="action-label">Md Arshad Ali · Cover Letter</span>
+      <button class="btn-print" onclick="window.print()">↓ Save as PDF</button>
+    </div>
+  </div>
+
+  <div class="letter">
+
+    <!-- Header -->
+    <div class="letter-header">
+      <div class="letter-header-left">
+        <h1>Md Arshad Ali</h1>
+        <p class="title">Cloud &amp; DevOps Engineer</p>
+      </div>
+      <div class="letter-header-right">
+        <p>
+          <a href="mailto:arshali471@gmail.com">arshali471@gmail.com</a><br>
+          <a href="tel:+917870831211">+91 78708 31211</a><br>
+          Delhi, India<br>
+          <a href="https://linkedin.com/in/md-arshad-ali-06279a1b2" target="_blank">linkedin.com/in/md-arshad-ali-06279a1b2</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="letter-body">
+
+      <p class="letter-date">May 2025</p>
+
+      <div class="letter-to">
+        <p><strong>Dear Hiring Manager,</strong></p>
+      </div>
+
+      <div class="subject">
+        <p><strong>Re: Cloud &amp; DevOps Engineering / SRE / Platform Engineering Opportunities</strong></p>
+      </div>
+
+      <p class="letter-para">
+        I am writing to express my strong interest in Cloud &amp; DevOps Engineering, Site Reliability Engineering, or Platform Engineering roles at your organisation. With <strong>3+ years of hands-on experience</strong> building and scaling enterprise AWS infrastructure at Tata Consultancy Services, I have developed a deep understanding of what it takes to operate distributed systems reliably, efficiently, and securely at scale.
+      </p>
+
+      <p class="letter-para">
+        At TCS, I have driven outcomes that go well beyond the technical: I architected an AWS Cloud Management Platform that cut manual operations effort by <span class="pill">80%</span>, optimised CI/CD pipelines to deliver a <span class="pill">60% improvement in deployment speed</span>, and led a cost optimisation initiative that saved <span class="pill">20% of monthly AWS spend</span> — recognised at division level. These were not isolated wins; they were the result of systematic thinking about infrastructure, automation, and reliability as first-class engineering concerns.
+      </p>
+
+      <p class="letter-para">
+        I have also been at the forefront of integrating AI into DevOps workflows. Using <strong>AWS Bedrock and the Claude API</strong>, I built an AI Cost Intelligence system that found an additional 35% in savings. I deployed an LLM-powered incident response bot (LangChain + PagerDuty + Slack) that reduced Mean Time to Resolution by <strong>70%</strong>. And I built a RAG knowledge base over our infrastructure runbooks that cut operational queries by <strong>80%</strong>. I believe the next frontier for DevOps engineers is not just running systems — it's making systems that reason.
+      </p>
+
+      <p class="letter-para">
+        Beyond metrics, I hold <strong>four industry certifications</strong> (AWS Solutions Architect – Associate, AWS AI Practitioner, HashiCorp Terraform Associate, AWS Cloud Practitioner), have built a live production product (<a href="https://serverpulse.in" target="_blank" style="color:#059669;font-weight:600;">ServerPulse</a> — real-time server analytics SaaS), and I am continuously learning. I bring the mindset of an engineer who treats reliability, security, and efficiency as non-negotiables — not afterthoughts.
+      </p>
+
+      <p class="letter-para">
+        I am <strong>open to opportunities anywhere in India and internationally</strong>, including fully remote roles. I would welcome the chance to discuss how my background aligns with your team's needs. I am available for a call at your earliest convenience.
+      </p>
+
+      <p class="letter-para">
+        Thank you for your time and consideration. I look forward to the possibility of contributing to your organisation.
+      </p>
+
+      <div class="letter-closing">
+        <p class="closing-line">Sincerely,</p>
+        <p class="signature-name">Md Arshad Ali</p>
+        <p class="signature-title">Cloud &amp; DevOps Engineer</p>
+        <div class="signature-contacts">
+          <a href="mailto:arshali471@gmail.com">arshali471@gmail.com</a>
+          <a href="tel:+917870831211">+91 78708 31211</a>
+          <a href="https://linkedin.com/in/md-arshad-ali-06279a1b2" target="_blank">linkedin.com/in/md-arshad-ali-06279a1b2</a>
+          <a href="https://serverpulse.in" target="_blank">serverpulse.in</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="height:2rem"></div>
+
+</body>
+</html>

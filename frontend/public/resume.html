@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Md Arshad Ali — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #111111;
+      background: #f0ece8;
+    }
+
+    /* ── Action bar ── */
+    .action-bar {
+      background: #111111;
+      padding: 0.7rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .action-bar a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    .action-bar a:hover { color: #fff; }
+    .action-bar-right { display: flex; align-items: center; gap: 0.75rem; }
+    .action-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+    .btn-print {
+      background: #ffffff;
+      color: #111111;
+      border: none;
+      padding: 0.45rem 1.2rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: Inter, sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-print:hover { background: #f0ece8; }
+
+    /* ── Resume paper ── */
+    .resume {
+      max-width: 920px;
+      margin: 2rem auto;
+      background: #ffffff;
+      box-shadow: 0 8px 60px rgba(0,0,0,0.12);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* ── Header ── */
+    .resume-header {
+      background: #111111;
+      color: #ffffff;
+      padding: 2.5rem 3rem;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .resume-header h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .header-title {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 1.1rem;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.2rem;
+    }
+    .contact-row a, .contact-row span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+    }
+    .contact-row a:hover { color: #fff; }
+    .contact-sep { color: rgba(255,255,255,0.3); }
+
+    /* ── Body grid ── */
+    .resume-body {
+      display: grid;
+      grid-template-columns: 1fr 285px;
+    }
+
+    .resume-main {
+      padding: 2rem 2.5rem 3rem;
+      border-right: 1px solid #ebebeb;
+    }
+
+    .resume-sidebar {
+      padding: 2rem 1.75rem 3rem;
+      background: #fafafa;
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 2rem; }
+    .section:last-child { margin-bottom: 0; }
+
+    .section-title {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #999999;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    /* ── Summary ── */
+    .summary { color: #444444; line-height: 1.78; font-size: 0.84rem; }
+
+    .metrics-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .metric {
+      background: #f9f5f0;
+      border: 1px solid #e8dfd6;
+      border-radius: 0.6rem;
+      padding: 0.45rem 0.85rem;
+      text-align: center;
+    }
+    .metric-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111111;
+      display: block;
+      line-height: 1.1;
+    }
+    .metric-label {
+      font-size: 0.6rem;
+      color: #999999;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Job ── */
+    .job { margin-bottom: 1.5rem; }
+    .job:last-child { margin-bottom: 0; }
+
+    .job-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .job-title { font-weight: 700; font-size: 0.88rem; color: #111111; }
+    .job-company { font-size: 0.82rem; color: #555555; font-weight: 500; margin-top: 0.1rem; }
+    .job-date {
+      font-size: 0.73rem;
+      color: #999999;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-left: 1rem;
+      margin-top: 0.1rem;
+    }
+    .job-location { font-size: 0.73rem; color: #aaaaaa; margin: 0.3rem 0 0.6rem; }
+
+    .job ul { list-style: none; padding: 0; }
+    .job ul li {
+      font-size: 0.81rem;
+      color: #444444;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+      line-height: 1.62;
+    }
+    .job ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #cccccc;
+      font-size: 0.68rem;
+      top: 0.18rem;
+    }
+
+    /* ── Project ── */
+    .project { margin-bottom: 1.1rem; }
+    .project:last-child { margin-bottom: 0; }
+
+    .project-name { font-weight: 700; font-size: 0.86rem; color: #111111; }
+    .project-link {
+      font-size: 0.73rem;
+      color: #059669;
+      text-decoration: none;
+      margin-left: 0.4rem;
+      font-weight: 500;
+    }
+    .project-desc {
+      font-size: 0.79rem;
+      color: #555555;
+      line-height: 1.62;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Sidebar: Skills ── */
+    .skill-group { margin-bottom: 1rem; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-group-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #999999;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.35rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .skill-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      color: #555555;
+    }
+
+    /* ── Sidebar: Certs ── */
+    .cert { display: flex; align-items: flex-start; gap: 0.55rem; margin-bottom: 0.7rem; }
+    .cert:last-child { margin-bottom: 0; }
+    .cert-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 0.33rem; }
+    .cert-name { font-size: 0.77rem; font-weight: 600; color: #111111; line-height: 1.4; }
+    .cert-issuer { font-size: 0.68rem; color: #aaaaaa; }
+
+    /* ── Sidebar: Education ── */
+    .edu-degree { font-size: 0.83rem; font-weight: 700; color: #111111; }
+    .edu-school { font-size: 0.75rem; color: #666666; margin-top: 0.2rem; line-height: 1.5; }
+    .edu-detail { font-size: 0.73rem; color: #aaaaaa; margin-top: 0.25rem; }
+
+    /* ── Sidebar: Achievements ── */
+    .achievement { margin-bottom: 0.85rem; }
+    .achievement:last-child { margin-bottom: 0; }
+    .achievement-title { font-size: 0.8rem; font-weight: 600; color: #111111; }
+    .achievement-desc { font-size: 0.72rem; color: #777777; margin-top: 0.15rem; line-height: 1.5; }
+
+    /* ── Print ── */
+    @media print {
+      .action-bar { display: none !important; }
+      body { background: #ffffff; }
+      .resume { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+      .resume-body { grid-template-columns: 1fr 260px; }
+      .resume-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .metric { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+    @page { margin: 0.6cm; size: A4; }
+  </style>
+</head>
+<body>
+
+  <!-- Action bar -->
+  <div class="action-bar">
+    <a href="/">← Back to Portfolio</a>
+    <div class="action-bar-right">
+      <span class="action-label">Md Arshad Ali · Resume</span>
+      <button class="btn-print" onclick="window.print()">↓ Save as PDF</button>
+    </div>
+  </div>
+
+  <div class="resume">
+
+    <!-- Header -->
+    <div class="resume-header">
+      <h1>Md Arshad Ali</h1>
+      <p class="header-title">Cloud &amp; DevOps Engineer</p>
+      <div class="contact-row">
+        <a href="mailto:arshali471@gmail.com">arshali471@gmail.com</a>
+        <span class="contact-sep">·</span>
+        <a href="tel:+917870831211">+91 78708 31211</a>
+        <span class="contact-sep">·</span>
+        <span>Delhi, India</span>
+        <span class="contact-sep">·</span>
+        <a href="https://linkedin.com/in/md-arshad-ali-06279a1b2" target="_blank">linkedin.com/in/md-arshad-ali-06279a1b2</a>
+        <span class="contact-sep">·</span>
+        <a href="https://github.com/arshali471" target="_blank">github.com/arshali471</a>
+        <span class="contact-sep">·</span>
+        <a href="https://serverpulse.in" target="_blank">serverpulse.in</a>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="resume-body">
+
+      <!-- Main column -->
+      <div class="resume-main">
+
+        <div class="section">
+          <p class="section-title">Professional Summary</p>
+          <p class="summary">
+            Results-driven Cloud &amp; DevOps Engineer with <strong>3+ years</strong> of experience designing, deploying, and optimising enterprise-scale AWS infrastructure at Tata Consultancy Services. Specialises in CI/CD automation, Kubernetes orchestration, infrastructure-as-code, and AI-augmented DevOps workflows. Proven track record delivering measurable business impact across cost, reliability, and delivery speed. Open to DevOps, SRE, and Platform Engineering roles — anywhere in India or internationally.
+          </p>
+          <div class="metrics-row">
+            <div class="metric"><span class="metric-num">80%</span><span class="metric-label">Ops Reduction</span></div>
+            <div class="metric"><span class="metric-num">60%</span><span class="metric-label">Faster Deploys</span></div>
+            <div class="metric"><span class="metric-num">20%</span><span class="metric-label">Cost Savings</span></div>
+            <div class="metric"><span class="metric-num">3+</span><span class="metric-label">Yrs Exp.</span></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="section-title">Work Experience</p>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <p class="job-title">Cloud &amp; DevOps Engineer</p>
+                <p class="job-company">Tata Consultancy Services (TCS)</p>
+              </div>
+              <span class="job-date">Jul 2022 – Present</span>
+            </div>
+            <p class="job-location">Delhi, India · Full-time</p>
+            <ul>
+              <li>Built <strong>AWS Cloud Data Inventory &amp; Management Platform</strong> (35K+ lines TypeScript) — browser SSH terminal, EC2 / S3 / RDS / EKS dashboards, cost analysis engine, Azure AD SSO → <strong>80% reduction in manual ops effort</strong></li>
+              <li>Optimised CI/CD pipelines (Jenkins, AWS CodePipeline, GitHub Actions) → <strong>60% faster deployment cycles</strong></li>
+              <li>Led cloud cost optimisation across business unit → <strong>20% reduction in monthly AWS spend</strong>, recognised at division level</li>
+              <li>Maintained <strong>100% security compliance</strong> score using AWS Config, GuardDuty, IAM, and Security Hub audits</li>
+              <li>Reduced incident response time by <strong>50%</strong> through Grafana + CloudWatch alerting and runbook automation</li>
+              <li>Integrated <strong>AWS Bedrock + Claude API</strong> for AI-powered cost intelligence → <strong>35% additional cost reduction</strong></li>
+              <li>Built LLM-powered incident response bot (LangChain + PagerDuty / Slack) → <strong>70% MTTR reduction</strong></li>
+              <li>Deployed SageMaker-based Log Anomaly Detector → <strong>90% failure prediction accuracy</strong></li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <p class="job-title">Full Stack Developer</p>
+                <p class="job-company">Panicle Tech</p>
+              </div>
+              <span class="job-date">May 2021 – May 2022</span>
+            </div>
+            <p class="job-location">Remote · Internship</p>
+            <ul>
+              <li>Built production web applications using React.js, Node.js, and MongoDB for B2B clients</li>
+              <li>Designed RESTful APIs and database schemas; handled deployment and server configuration</li>
+              <li>Prototyped ML feature integrations for client analytics dashboards</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="section-title">Key Projects</p>
+
+          <div class="project">
+            <p class="project-name">ServerPulse <a class="project-link" href="https://serverpulse.in" target="_blank">↗ serverpulse.in</a></p>
+            <p class="project-desc">Real-time server analytics platform. Cross-platform agent (Linux / macOS / Windows) streams CPU, memory, disk, and network metrics to a centralised dashboard. Multi-server support, configurable alerts, security scanning. Built with React, Node.js, Redis, Socket.io. <strong>Live in production.</strong></p>
+          </div>
+
+          <div class="project">
+            <p class="project-name">AI Cost Intelligence &amp; Incident Response System</p>
+            <p class="project-desc">AWS Bedrock + Claude API integration that analyses cloud spend patterns and generates natural-language recommendations → <strong>35% additional cost reduction</strong>. LangChain-powered incident response bot integrated with PagerDuty and Slack → <strong>70% MTTR reduction</strong>.</p>
+          </div>
+
+          <div class="project">
+            <p class="project-name">RAG Infrastructure Knowledge Base</p>
+            <p class="project-desc">AWS Bedrock Knowledge Bases embedding all infrastructure runbooks and operational playbooks. Enables engineers to query infra state and resolve incidents in natural language → <strong>80% reduction in operational queries</strong>.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="resume-sidebar">
+
+        <div class="section">
+          <p class="section-title">Technical Skills</p>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Cloud</p>
+            <div class="skill-tags">
+              <span class="skill-tag">AWS</span>
+              <span class="skill-tag">EC2</span>
+              <span class="skill-tag">Lambda</span>
+              <span class="skill-tag">S3</span>
+              <span class="skill-tag">RDS</span>
+              <span class="skill-tag">EKS</span>
+              <span class="skill-tag">Bedrock</span>
+              <span class="skill-tag">CloudFront</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">DevOps &amp; Infra</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Kubernetes</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Terraform</span>
+              <span class="skill-tag">Helm</span>
+              <span class="skill-tag">ArgoCD</span>
+              <span class="skill-tag">Ansible</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">CI/CD</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Jenkins</span>
+              <span class="skill-tag">GitHub Actions</span>
+              <span class="skill-tag">CodePipeline</span>
+              <span class="skill-tag">GitOps</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">AI / ML</p>
+            <div class="skill-tags">
+              <span class="skill-tag">AWS Bedrock</span>
+              <span class="skill-tag">Claude API</span>
+              <span class="skill-tag">SageMaker</span>
+              <span class="skill-tag">LangChain</span>
+              <span class="skill-tag">RAG</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Monitoring</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Grafana</span>
+              <span class="skill-tag">Prometheus</span>
+              <span class="skill-tag">CloudWatch</span>
+              <span class="skill-tag">PagerDuty</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Programming</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Bash</span>
+              <span class="skill-tag">SQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="section-title">Certifications</p>
+          <div class="cert">
+            <span class="cert-dot" style="background:#b45309"></span>
+            <div>
+              <p class="cert-name">AWS Solutions Architect – Associate</p>
+              <p class="cert-issuer">Amazon Web Services</p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert-dot" style="background:#7c3aed"></span>
+            <div>
+              <p class="cert-name">HashiCorp Terraform Associate</p>
+              <p class="cert-issuer">HashiCorp</p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert-dot" style="background:#b45309"></span>
+            <div>
+              <p class="cert-name">AWS Cloud Practitioner</p>
+              <p class="cert-issuer">Amazon Web Services</p>
+            </div>
+          </div>
+          <div class="cert">
+            <span class="cert-dot" style="background:#1d4ed8"></span>
+            <div>
+              <p class="cert-name">AWS Certified AI Practitioner</p>
+              <p class="cert-issuer">Amazon Web Services</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="section-title">Education</p>
+          <p class="edu-degree">B.Tech — Computer Science &amp; Engineering</p>
+          <p class="edu-school">Guru Gobind Singh Educational Society's Technical Campus<br>Bokaro, Jharkhand</p>
+          <p class="edu-detail">2018 – 2022 &nbsp;·&nbsp; CGPA <strong>8.64 / 10</strong></p>
+        </div>
+
+        <div class="section">
+          <p class="section-title">Achievements</p>
+          <div class="achievement">
+            <p class="achievement-title">Star Employee of the Month</p>
+            <p class="achievement-desc">TCS — delivered critical infrastructure automation ahead of schedule with zero production incidents</p>
+          </div>
+          <div class="achievement">
+            <p class="achievement-title">Cost Optimisation Leader</p>
+            <p class="achievement-desc">TCS — 20% AWS cost reduction recognised at division level for business impact</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="height:2rem"></div>
+
+</body>
+</html>

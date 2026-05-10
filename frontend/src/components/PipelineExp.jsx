@@ -1,44 +1,67 @@
+import { useScrollReveal } from '../hooks/useScrollReveal';
+
 export default function PipelineExp({ experience }) {
+  const [ref, visible] = useScrollReveal(0.1);
+
   return (
-    <section className="animate-slide-in-right">
-      <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-        <span className="text-aws-orange animate-pulse">⚡</span>
-        <span className="bg-gradient-to-r from-aws-orange to-yellow-500 bg-clip-text text-transparent">./experience.sh</span>
-        <span className="text-xs font-normal text-slate-500 border border-slate-700 px-2 py-0.5 rounded-full bg-slate-800 animate-pulse-border">CD Pipeline View</span>
-      </h2>
-      
-      <div className="relative border-l-2 border-slate-700 ml-3 md:ml-6 space-y-12 before:absolute before:top-0 before:left-0 before:w-0.5 before:h-full before:bg-gradient-to-b before:from-terminal-green before:via-transparent before:to-transparent before:animate-pulse">
-        {experience.map((job) => (
-          <div key={job.id} className="relative pl-8 md:pl-12 animate-fade-in" style={{ animationDelay: `${job.id * 0.2}s` }}>
-            {/* Pipeline Node */}
-            <div className="absolute -left-[9px] top-0 bg-slate-900 border-2 border-terminal-green w-4 h-4 rounded-full animate-pulse">
-              <div className="absolute inset-0 bg-terminal-green rounded-full animate-ping opacity-75"></div>
-            </div>
-            
-            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-6 rounded border border-slate-700 hover:border-terminal-green transition-all group transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-terminal-green/20">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-slate-100 group-hover:text-terminal-green transition-colors">
-                    {job.company}
-                  </h3>
-                  <p className="text-aws-orange text-sm">{job.role}</p>
-                </div>
-                <span className="text-xs bg-slate-700 text-slate-300 px-2 py-1 rounded mt-2 md:mt-0 w-fit">
-                  {job.period}
-                </span>
+    <section id="experience" ref={ref} className="py-20">
+      <div className="mb-12">
+        <p className="eyebrow">Work Experience</p>
+        <h2 className="font-heading" style={{ fontSize: 'clamp(2rem,4vw,3rem)', color: '#111111' }}>
+          Where I've Shipped Impact
+        </h2>
+      </div>
+
+      <div className="relative">
+        {/* Vertical line */}
+        <div
+          className="absolute left-5 top-0 bottom-0 w-px hidden md:block"
+          style={{ background: 'linear-gradient(to bottom, #111111, #cccccc, transparent)' }}
+        />
+
+        <div className="space-y-8">
+          {experience.map((job, idx) => (
+            <div
+              key={job.id}
+              className="relative md:pl-16"
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? 'translateX(0)' : 'translateX(-20px)',
+                transition: `opacity 0.6s ease ${idx * 0.18}s, transform 0.6s ease ${idx * 0.18}s`,
+              }}
+            >
+              {/* Timeline dot */}
+              <div className="absolute left-5 top-6 -translate-x-1/2 hidden md:flex">
+                <div className="timeline-dot" />
               </div>
-              
-              <ul className="space-y-2">
-                {job.highlights.map((point, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-slate-400">
-                    <span className="text-terminal-green mt-1">✓</span>
-                    {point}
-                  </li>
-                ))}
-              </ul>
+
+              <div className="card">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5">
+                  <div>
+                    <h3 className="font-heading text-xl" style={{ color: '#111111' }}>{job.company}</h3>
+                    <p className="mt-0.5 font-body text-sm font-semibold" style={{ color: '#b45309', fontFamily: 'Inter, sans-serif' }}>
+                      {job.role}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2 shrink-0">
+                    <span className="tag tag-dark">{job.period}</span>
+                    <span className="tag tag-orange">{job.type}</span>
+                    <span className="text-xs self-center" style={{ color: '#888888', fontFamily: 'Inter, sans-serif' }}>{job.location}</span>
+                  </div>
+                </div>
+
+                <ul className="space-y-2.5">
+                  {job.highlights.map((point, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm" style={{ color: '#666666', fontFamily: 'Inter, sans-serif', lineHeight: 1.65 }}>
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-ink-900 shrink-0" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
