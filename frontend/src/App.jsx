@@ -48,7 +48,7 @@ export default function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('/data.json')
+    fetch(import.meta.env.BASE_URL + 'data.json')
       .then(r => r.json())
       .then(setData)
       .catch(console.error);

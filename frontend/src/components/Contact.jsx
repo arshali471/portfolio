@@ -50,7 +50,7 @@ export default function Contact({ profile }) {
             }}
           >
             <img
-              src="/image.png"
+              src={import.meta.env.BASE_URL + 'image.png'}
               alt="Arshad Ali"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
             />

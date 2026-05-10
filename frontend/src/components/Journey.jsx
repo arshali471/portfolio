@@ -97,7 +97,7 @@ function StorySection({ section }) {
         }}
       >
         <img
-          src={section.photo}
+          src={import.meta.env.BASE_URL + section.photo.replace(/^\//, '')}
           alt={section.eyebrow}
           style={{
             width: '100%',
@@ -293,7 +293,7 @@ function ChapterList({ chapters }) {
           style={{ height: 260, border: '1px solid #ebe2d8', boxShadow: '0 8px 30px rgba(0,0,0,0.08)' }}
         >
           <img
-            src="/IMG_2094.jpeg"
+            src={import.meta.env.BASE_URL + 'IMG_2094.jpeg'}
             alt="Arshad Ali"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 10%' }}
           />
